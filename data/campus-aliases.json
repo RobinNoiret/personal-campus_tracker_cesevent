@@ -1,0 +1,52 @@
+{
+  "paris": {
+    "name": "Paris",
+    "hashtags": ["#paris", "#pariscampus"],
+    "aliases": ["paris", "capitale"]
+  },
+  "lyon": {
+    "name": "Lyon",
+    "hashtags": ["#lyon", "#lyoncampus"],
+    "aliases": ["lyon"]
+  },
+  "nanterre": {
+    "name": "Nanterre",
+    "hashtags": ["#nanterre", "#nanterrecampus"],
+    "aliases": ["nanterre"]
+  },
+  "bordeaux": {
+    "name": "Bordeaux",
+    "hashtags": ["#bordeaux", "#bordeauxcampus"],
+    "aliases": ["bordeaux"]
+  },
+  "lille": {
+    "name": "Lille",
+    "hashtags": ["#lille", "#lillecampus"],
+    "aliases": ["lille"]
+  },
+  "toulouse": {
+    "name": "Toulouse",
+    "hashtags": ["#toulouse", "#toulousecampus"],
+    "aliases": ["toulouse"]
+  },
+  "marseille": {
+    "name": "Marseille",
+    "hashtags": ["#marseille", "#marseillecampus"],
+    "aliases": ["marseille"]
+  },
+  "strasbourg": {
+    "name": "Strasbourg",
+    "hashtags": ["#strasbourg", "#strasbourgcampus"],
+    "aliases": ["strasbourg"]
+  },
+  "rennes": {
+    "name": "Rennes",
+    "hashtags": ["#rennes", "#rennescampus"],
+    "aliases": ["rennes"]
+  },
+  "nantes": {
+    "name": "Nantes",
+    "hashtags": ["#nantes", "#nantescampus"],
+    "aliases": ["nantes"]
+  }
+}
