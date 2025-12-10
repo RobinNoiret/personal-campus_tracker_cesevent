@@ -70,7 +70,7 @@ export default function DonationFeed() {
               <div style={styles.donationHeader}>
                 <span style={styles.donorName}>{donation.name}</span>
                 <span style={styles.donationAmount}>
-                  {donation.amount.toFixed(2)} {donation.currency}
+                  {parseFloat(String(donation.amount || 0)).toFixed(2)} {donation.currency}
                 </span>
               </div>
 
@@ -89,7 +89,7 @@ export default function DonationFeed() {
                   </span>
                 )}
                 <span style={styles.timestamp}>
-                  {new Date(donation.timestamp * 1000).toLocaleTimeString('fr-FR')}
+                  {new Date(parseInt(String(donation.timestamp)) * 1000).toLocaleTimeString('fr-FR')}
                 </span>
               </div>
             </div>

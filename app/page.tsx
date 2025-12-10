@@ -15,10 +15,6 @@ export default function HomePage() {
         <div style={styles.section}>
           <LeaderboardCard />
         </div>
-
-        <div style={styles.section}>
-          <DonationFeed />
-        </div>
       </div>
 
       <footer style={styles.footer}>

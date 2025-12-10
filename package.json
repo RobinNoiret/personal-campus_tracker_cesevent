@@ -9,7 +9,10 @@
     "lint": "next lint",
     "test:parser": "tsx lib/campus/parser.test.ts",
     "test:parse": "tsx scripts/test-parsing.ts",
-    "get-token": "tsx scripts/get-streamlabs-token.ts"
+    "get-token": "tsx scripts/get-streamlabs-token.ts",
+    "init-db": "tsx scripts/init-database.ts",
+    "seed-db": "tsx scripts/seed-database.ts",
+    "sync": "tsx scripts/sync-donations.ts"
   },
   "keywords": [
     "charity",
@@ -20,6 +23,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@neondatabase/serverless": "^1.0.2",
     "@types/node": "^24.10.2",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",

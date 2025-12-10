@@ -71,21 +71,26 @@ export default function LeaderboardCard() {
   // Filtre les campus avec au moins une donation
   const activeCampus = data.leaderboard.filter(c => c.donationCount > 0)
 
+  // Convertir les valeurs en nombres (peuvent être des strings depuis PostgreSQL)
+  const totalAmount = parseFloat(String(data.stats.totalAmount || 0))
+  const totalDonations = parseInt(String(data.stats.totalDonations || 0))
+  const campusCount = parseInt(String(data.stats.campusCount || 0))
+
   return (
     <div style={styles.container} className="animate-fade-in">
       <div style={styles.header}>
         <h2 style={styles.title}>🏆 Classement des Campus</h2>
         <div style={styles.statsRow}>
           <div style={styles.stat}>
-            <span style={styles.statValue}>{data.stats.totalAmount.toFixed(2)} €</span>
+            <span style={styles.statValue}>{totalAmount.toFixed(2)} €</span>
             <span style={styles.statLabel}>Total collecté</span>
           </div>
           <div style={styles.stat}>
-            <span style={styles.statValue}>{data.stats.totalDonations}</span>
+            <span style={styles.statValue}>{totalDonations}</span>
             <span style={styles.statLabel}>Donations</span>
           </div>
           <div style={styles.stat}>
-            <span style={styles.statValue}>{data.stats.campusCount}</span>
+            <span style={styles.statValue}>{campusCount}</span>
             <span style={styles.statLabel}>Campus participants</span>
           </div>
         </div>
@@ -119,7 +124,7 @@ export default function LeaderboardCard() {
               </div>
 
               <div style={styles.campusAmount}>
-                {campus.totalAmount.toFixed(2)} €
+                {parseFloat(String(campus.totalAmount || 0)).toFixed(2)} €
               </div>
             </div>
           ))
@@ -130,7 +135,7 @@ export default function LeaderboardCard() {
         <div style={styles.footer}>
           <span style={styles.unidentified}>
             {data.stats.unidentified.count} donation(s) non identifiée(s) -{' '}
-            {data.stats.unidentified.amount.toFixed(2)} €
+            {parseFloat(String(data.stats.unidentified.amount || 0)).toFixed(2)} €
           </span>
           <span style={styles.hint}>
             💡 Pensez à ajouter le hashtag de votre campus !
