@@ -35,8 +35,8 @@ export async function GET(request: Request) {
           `"${d.message.replace(/"/g, '""')}"`,
           d.amount,
           d.currency,
-          d.campus.campusId || '',
-          `"${(d.campus.campusName || '').replace(/"/g, '""')}"`,
+          d.campus_id || '',
+          `"${(d.campus_name || '').replace(/"/g, '""')}"`,
           date,
           d.timestamp
         ].join(',')
