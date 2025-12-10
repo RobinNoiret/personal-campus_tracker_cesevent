@@ -86,6 +86,7 @@ export interface DonationWithCampus {
   message: string
   name: string
   timestamp: number
+  verified: boolean
   campus: ParseResult
 }
 

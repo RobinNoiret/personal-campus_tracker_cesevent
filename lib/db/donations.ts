@@ -111,23 +111,30 @@ export async function getAllDonations(options?: {
     sortOrder = 'desc'
   } = options || {}
 
-  const orderClause = sortOrder === 'desc' ? 'DESC' : 'ASC'
-
   try {
-    // Note: Avec neon(), on doit construire la requête dynamiquement
-    let query = 'SELECT * FROM donations '
+    // Utiliser des requêtes séparées selon le tri demandé
+    let result: any[]
 
     if (sortBy === 'timestamp') {
-      query += `ORDER BY timestamp ${orderClause} `
+      if (sortOrder === 'desc') {
+        result = await sql`SELECT * FROM donations ORDER BY timestamp DESC LIMIT ${limit} OFFSET ${offset}`
+      } else {
+        result = await sql`SELECT * FROM donations ORDER BY timestamp ASC LIMIT ${limit} OFFSET ${offset}`
+      }
     } else if (sortBy === 'amount') {
-      query += `ORDER BY amount ${orderClause} `
+      if (sortOrder === 'desc') {
+        result = await sql`SELECT * FROM donations ORDER BY amount DESC LIMIT ${limit} OFFSET ${offset}`
+      } else {
+        result = await sql`SELECT * FROM donations ORDER BY amount ASC LIMIT ${limit} OFFSET ${offset}`
+      }
     } else {
-      query += `ORDER BY created_at ${orderClause} `
+      if (sortOrder === 'desc') {
+        result = await sql`SELECT * FROM donations ORDER BY created_at DESC LIMIT ${limit} OFFSET ${offset}`
+      } else {
+        result = await sql`SELECT * FROM donations ORDER BY created_at ASC LIMIT ${limit} OFFSET ${offset}`
+      }
     }
 
-    query += `LIMIT ${limit} OFFSET ${offset}`
-
-    const result = await sql(query)
     return result as StoredDonation[]
   } catch (error) {
     console.error('Error fetching donations:', error)
