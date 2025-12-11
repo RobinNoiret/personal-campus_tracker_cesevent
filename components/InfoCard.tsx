@@ -88,7 +88,7 @@ const styles = {
   container: {
     backgroundColor: 'var(--grey-dark)',
     borderRadius: 'var(--radius-lg)',
-    padding: 'var(--spacing-xl)',
+    padding: 'clamp(1rem, 3vw, 2rem)',
     boxShadow: 'var(--shadow-lg)',
     height: '100%',
     display: 'flex',
@@ -98,12 +98,12 @@ const styles = {
   header: {
     display: 'flex',
     alignItems: 'center',
-    gap: 'var(--spacing-md)',
-    marginBottom: 'var(--spacing-lg)',
+    gap: 'clamp(0.5rem, 2vw, 1rem)',
+    marginBottom: 'clamp(0.75rem, 2vw, 1.5rem)',
   } as React.CSSProperties,
 
   title: {
-    fontSize: '1.5rem',
+    fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
     fontWeight: 'bold',
     color: 'var(--orange-primary)',
   } as React.CSSProperties,
@@ -111,13 +111,13 @@ const styles = {
   content: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 'var(--spacing-lg)',
+    gap: 'clamp(0.75rem, 2vw, 1.5rem)',
     flex: 1,
   } as React.CSSProperties,
 
   description: {
     color: 'var(--white)',
-    fontSize: '1rem',
+    fontSize: 'clamp(0.875rem, 2vw, 1rem)',
     lineHeight: '1.6',
     opacity: 0.9,
   } as React.CSSProperties,
@@ -131,7 +131,7 @@ const styles = {
 
   infoLine: {
     color: 'var(--white)',
-    fontSize: '1rem',
+    fontSize: 'clamp(0.875rem, 2vw, 1rem)',
     lineHeight: '1.6',
     opacity: 0.9,
     margin: 0,
@@ -144,7 +144,7 @@ const styles = {
 
   goal: {
     color: 'var(--white)',
-    fontSize: '1rem',
+    fontSize: 'clamp(0.875rem, 2vw, 1rem)',
     lineHeight: '1.6',
     opacity: 0.95,
     fontWeight: '600',
@@ -160,7 +160,7 @@ const styles = {
   hashtagSection: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 'var(--spacing-md)',
+    gap: 'clamp(0.5rem, 2vw, 1rem)',
   } as React.CSSProperties,
 
   hashtagHeader: {
@@ -170,14 +170,14 @@ const styles = {
   } as React.CSSProperties,
 
   hashtagTitle: {
-    fontSize: '1.125rem',
+    fontSize: 'clamp(1rem, 2.5vw, 1.125rem)',
     fontWeight: '600',
     color: 'var(--orange-light)',
   } as React.CSSProperties,
 
   hashtagText: {
     color: 'var(--white)',
-    fontSize: '0.9375rem',
+    fontSize: 'clamp(0.8125rem, 2vw, 0.9375rem)',
     lineHeight: '1.6',
     opacity: 0.85,
   } as React.CSSProperties,
@@ -185,12 +185,12 @@ const styles = {
   exampleBox: {
     backgroundColor: 'var(--grey-light)',
     borderRadius: 'var(--radius-md)',
-    padding: 'var(--spacing-md)',
+    padding: 'clamp(0.75rem, 2vw, 1rem)',
   } as React.CSSProperties,
 
   exampleLabel: {
     color: 'var(--white)',
-    fontSize: '0.875rem',
+    fontSize: 'clamp(0.8125rem, 2vw, 0.875rem)',
     fontWeight: '600',
     marginBottom: 'var(--spacing-sm)',
     opacity: 0.9,
@@ -199,22 +199,22 @@ const styles = {
   hashtagList: {
     display: 'flex',
     flexWrap: 'wrap',
-    gap: 'var(--spacing-sm)',
+    gap: 'clamp(0.375rem, 1.5vw, 0.5rem)',
   } as React.CSSProperties,
 
   hashtag: {
     backgroundColor: 'var(--black)',
     color: 'var(--orange-pale)',
-    padding: '0.375rem 0.75rem',
+    padding: 'clamp(0.25rem, 1.5vw, 0.375rem) clamp(0.5rem, 2vw, 0.75rem)',
     borderRadius: 'var(--radius-sm)',
-    fontSize: '0.875rem',
+    fontSize: 'clamp(0.75rem, 2vw, 0.875rem)',
     fontWeight: '500',
     border: '1px solid var(--orange-primary)',
   } as React.CSSProperties,
 
   note: {
     color: 'var(--white)',
-    fontSize: '0.8125rem',
+    fontSize: 'clamp(0.75rem, 1.8vw, 0.8125rem)',
     lineHeight: '1.5',
     opacity: 0.6,
     fontStyle: 'italic',

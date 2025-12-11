@@ -73,22 +73,22 @@ const styles = {
   container: {
     backgroundColor: 'var(--grey-dark)',
     borderRadius: 'var(--radius-lg)',
-    padding: 'var(--spacing-xl)',
+    padding: 'clamp(1rem, 3vw, 2rem)',
     boxShadow: 'var(--shadow-lg)',
     width: '100%',
   } as React.CSSProperties,
 
   statsGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: 'var(--spacing-lg)',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+    gap: 'clamp(0.75rem, 2vw, 1.5rem)',
   } as React.CSSProperties,
 
   stat: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: 'var(--spacing-lg)',
+    padding: 'clamp(0.75rem, 2vw, 1.5rem)',
     backgroundColor: 'var(--grey-light)',
     borderRadius: 'var(--radius-md)',
   } as React.CSSProperties,
@@ -97,7 +97,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: 'var(--spacing-lg)',
+    padding: 'clamp(0.75rem, 2vw, 1.5rem)',
     backgroundColor: 'var(--grey-light)',
     borderRadius: 'var(--radius-md)',
     border: '3px solid var(--orange-primary)',
@@ -105,14 +105,14 @@ const styles = {
   } as React.CSSProperties,
 
   statValue: {
-    fontSize: '2rem',
+    fontSize: 'clamp(1.25rem, 4vw, 2rem)',
     fontWeight: 'bold',
     color: 'var(--orange-primary)',
     marginBottom: 'var(--spacing-sm)',
   } as React.CSSProperties,
 
   statLabel: {
-    fontSize: '1rem',
+    fontSize: 'clamp(0.8rem, 2vw, 1rem)',
     color: 'var(--white)',
     opacity: 0.8,
     textAlign: 'center',

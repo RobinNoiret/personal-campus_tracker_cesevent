@@ -155,7 +155,7 @@ const styles = {
   container: {
     backgroundColor: 'var(--grey-dark)',
     borderRadius: 'var(--radius-lg)',
-    padding: 'var(--spacing-xl)',
+    padding: 'clamp(1rem, 3vw, 2rem)',
     boxShadow: 'var(--shadow-lg)',
     width: '100%',
     maxWidth: '800px',
@@ -163,11 +163,11 @@ const styles = {
   } as React.CSSProperties,
 
   header: {
-    marginBottom: 'var(--spacing-xl)',
+    marginBottom: 'clamp(1rem, 3vw, 2rem)',
   } as React.CSSProperties,
 
   title: {
-    fontSize: '2rem',
+    fontSize: 'clamp(1.5rem, 4vw, 2rem)',
     fontWeight: 'bold',
     color: 'var(--orange-primary)',
     textAlign: 'center',
@@ -176,14 +176,14 @@ const styles = {
   leaderboard: {
     display: 'flex',
     flexDirection: 'column',
-    gap: 'var(--spacing-md)',
+    gap: 'clamp(0.5rem, 2vw, 1rem)',
   } as React.CSSProperties,
 
   campusRow: {
     display: 'flex',
     alignItems: 'center',
-    gap: 'var(--spacing-md)',
-    padding: 'var(--spacing-md)',
+    gap: 'clamp(0.5rem, 2vw, 1rem)',
+    padding: 'clamp(0.75rem, 2vw, 1rem)',
     backgroundColor: 'var(--grey-light)',
     borderRadius: 'var(--radius-md)',
     transition: 'transform 0.2s, box-shadow 0.2s',
@@ -195,53 +195,60 @@ const styles = {
   } as React.CSSProperties,
 
   rankBadge: {
-    fontSize: '1.5rem',
-    width: '50px',
+    fontSize: 'clamp(1rem, 3vw, 1.5rem)',
+    width: 'clamp(35px, 8vw, 50px)',
     textAlign: 'center',
     fontWeight: 'bold',
+    flexShrink: 0,
   } as React.CSSProperties,
 
   topThreeRank: {
     color: 'var(--orange-primary)',
-    fontSize: '1.75rem',
+    fontSize: 'clamp(1.25rem, 3.5vw, 1.75rem)',
   } as React.CSSProperties,
 
   campusInfo: {
     flex: 1,
+    minWidth: 0,
   } as React.CSSProperties,
 
   campusName: {
-    fontSize: '1.25rem',
+    fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
     fontWeight: 'bold',
     color: 'var(--white)',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
   } as React.CSSProperties,
 
   campusStats: {
-    fontSize: '0.875rem',
+    fontSize: 'clamp(0.75rem, 2vw, 0.875rem)',
     color: 'var(--white)',
     opacity: 0.7,
     marginTop: 'var(--spacing-xs)',
   } as React.CSSProperties,
 
   campusAmount: {
-    fontSize: '1.5rem',
+    fontSize: 'clamp(1rem, 3vw, 1.5rem)',
     fontWeight: 'bold',
     color: 'var(--orange-primary)',
+    flexShrink: 0,
+    whiteSpace: 'nowrap',
   } as React.CSSProperties,
 
   topThreeAmount: {
-    fontSize: '1.75rem',
+    fontSize: 'clamp(1.25rem, 3.5vw, 1.75rem)',
     color: 'var(--orange-light)',
   } as React.CSSProperties,
 
   footer: {
-    marginTop: 'var(--spacing-lg)',
-    paddingTop: 'var(--spacing-lg)',
+    marginTop: 'clamp(0.75rem, 2vw, 1.5rem)',
+    paddingTop: 'clamp(0.75rem, 2vw, 1.5rem)',
     borderTop: '1px solid var(--grey-light)',
     display: 'flex',
     flexDirection: 'column',
     gap: 'var(--spacing-sm)',
-    fontSize: '0.875rem',
+    fontSize: 'clamp(0.75rem, 2vw, 0.875rem)',
     color: 'var(--white)',
     opacity: 0.7,
   } as React.CSSProperties,
@@ -257,20 +264,20 @@ const styles = {
 
   loading: {
     textAlign: 'center',
-    padding: 'var(--spacing-xl)',
+    padding: 'clamp(1rem, 3vw, 2rem)',
     color: 'var(--white)',
     opacity: 0.7,
   } as React.CSSProperties,
 
   error: {
     textAlign: 'center',
-    padding: 'var(--spacing-xl)',
+    padding: 'clamp(1rem, 3vw, 2rem)',
     color: 'var(--orange-primary)',
   } as React.CSSProperties,
 
   empty: {
     textAlign: 'center',
-    padding: 'var(--spacing-xl)',
+    padding: 'clamp(1rem, 3vw, 2rem)',
     color: 'var(--white)',
     opacity: 0.7,
   } as React.CSSProperties,

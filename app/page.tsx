@@ -187,14 +187,15 @@ export default function HomePage() {
 const styles = {
   main: {
     minHeight: '100vh',
-    padding: '0 var(--spacing-xl) var(--spacing-xl)',
+    padding: 'clamp(0.5rem, 3vw, 2rem)',
+    paddingTop: 0,
     backgroundColor: 'var(--black)',
   } as React.CSSProperties,
 
   header: {
     textAlign: 'center',
-    paddingBottom: 'var(--spacing-sm)',
-    marginBottom: 'var(--spacing-md)',
+    paddingBottom: 'clamp(0.5rem, 2vw, 1rem)',
+    marginBottom: 'clamp(0.5rem, 2vw, 1rem)',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -202,18 +203,19 @@ const styles = {
 
   logo: {
     maxWidth: '100%',
+    width: 'clamp(150px, 40vw, 250px)',
     height: 'auto',
   } as React.CSSProperties,
 
   statsSection: {
     maxWidth: '1600px',
-    margin: '0 auto var(--spacing-xl)',
+    margin: '0 auto clamp(1rem, 3vw, 2rem)',
   } as React.CSSProperties,
 
   bentoGrid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: 'var(--spacing-xl)',
+    gap: 'clamp(1rem, 3vw, 2rem)',
     maxWidth: '1600px',
     margin: '0 auto',
   } as React.CSSProperties,
@@ -227,7 +229,7 @@ const styles = {
     gridColumn: '2 / 3',
     display: 'flex',
     flexDirection: 'column',
-    gap: 'var(--spacing-xl)',
+    gap: 'clamp(1rem, 3vw, 2rem)',
     height: '100%',
   } as React.CSSProperties,
 
@@ -243,20 +245,20 @@ const styles = {
     justifyContent: 'center',
     backgroundColor: 'var(--grey-dark)',
     borderRadius: 'var(--radius-lg)',
-    padding: 'var(--spacing-xl)',
+    padding: 'clamp(1rem, 3vw, 2rem)',
     boxShadow: 'var(--shadow-lg)',
   } as React.CSSProperties,
 
   footer: {
     textAlign: 'center',
-    padding: 'var(--spacing-xl) 0',
-    marginTop: 'var(--spacing-xl)',
+    padding: 'clamp(1rem, 3vw, 2rem) 0',
+    marginTop: 'clamp(1rem, 3vw, 2rem)',
   } as React.CSSProperties,
 
   footerLink: {
     color: 'var(--grey-light)',
     textDecoration: 'none',
-    fontSize: '0.9rem',
+    fontSize: 'clamp(0.8rem, 2vw, 0.9rem)',
     transition: 'color 0.2s',
   } as React.CSSProperties,
 }

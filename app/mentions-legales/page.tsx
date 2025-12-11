@@ -51,7 +51,7 @@ export default function MentionsLegalesPage() {
 const styles = {
   main: {
     minHeight: '100vh',
-    padding: 'var(--spacing-xl)',
+    padding: 'clamp(1rem, 5vw, 2rem)',
     backgroundColor: 'var(--black)',
   } as React.CSSProperties,
 
@@ -60,31 +60,31 @@ const styles = {
     margin: '0 auto',
     backgroundColor: 'var(--grey-dark)',
     borderRadius: 'var(--radius-lg)',
-    padding: 'var(--spacing-xl)',
+    padding: 'clamp(1rem, 5vw, 2rem)',
     boxShadow: 'var(--shadow-lg)',
   } as React.CSSProperties,
 
   title: {
-    fontSize: '2.5rem',
+    fontSize: 'clamp(1.5rem, 5vw, 2.5rem)',
     fontWeight: 'bold',
     marginBottom: 'var(--spacing-xl)',
-    color: 'var(--primary)',
+    color: 'var(--orange-primary)',
     textAlign: 'center',
   } as React.CSSProperties,
 
   section: {
-    marginBottom: 'var(--spacing-xl)',
+    marginBottom: 'clamp(1rem, 4vw, 2rem)',
   } as React.CSSProperties,
 
   subtitle: {
-    fontSize: '1.5rem',
+    fontSize: 'clamp(1.2rem, 4vw, 1.5rem)',
     fontWeight: 'bold',
     marginBottom: 'var(--spacing-sm)',
     color: 'var(--white)',
   } as React.CSSProperties,
 
   text: {
-    fontSize: '1rem',
+    fontSize: 'clamp(0.9rem, 3vw, 1rem)',
     lineHeight: '1.6',
     color: 'var(--white)',
   } as React.CSSProperties,
@@ -92,9 +92,9 @@ const styles = {
   backLink: {
     display: 'inline-block',
     marginTop: 'var(--spacing-lg)',
-    color: 'var(--primary)',
+    color: 'var(--orange-primary)',
     textDecoration: 'none',
-    fontSize: '1.1rem',
+    fontSize: 'clamp(1rem, 3vw, 1.1rem)',
     transition: 'color 0.2s',
   } as React.CSSProperties,
 }
