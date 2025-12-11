@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import LeaderboardCard from '@/components/LeaderboardCard'
 import StatsCard from '@/components/StatsCard'
 import InfoCard from '@/components/InfoCard'
@@ -173,6 +174,12 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
+      <footer style={styles.footer}>
+        <Link href="/mentions-legales" style={styles.footerLink}>
+          Mentions légales
+        </Link>
+      </footer>
     </main>
   )
 }
@@ -238,5 +245,18 @@ const styles = {
     borderRadius: 'var(--radius-lg)',
     padding: 'var(--spacing-xl)',
     boxShadow: 'var(--shadow-lg)',
+  } as React.CSSProperties,
+
+  footer: {
+    textAlign: 'center',
+    padding: 'var(--spacing-xl) 0',
+    marginTop: 'var(--spacing-xl)',
+  } as React.CSSProperties,
+
+  footerLink: {
+    color: 'var(--grey-light)',
+    textDecoration: 'none',
+    fontSize: '0.9rem',
+    transition: 'color 0.2s',
   } as React.CSSProperties,
 }
