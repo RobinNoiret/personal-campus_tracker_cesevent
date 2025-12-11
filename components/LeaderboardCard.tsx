@@ -71,29 +71,10 @@ export default function LeaderboardCard() {
   // Filtre les campus avec au moins une donation
   const activeCampus = data.leaderboard.filter(c => c.donationCount > 0)
 
-  // Convertir les valeurs en nombres (peuvent être des strings depuis PostgreSQL)
-  const totalAmount = parseFloat(String(data.stats.totalAmount || 0))
-  const totalDonations = parseInt(String(data.stats.totalDonations || 0))
-  const campusCount = parseInt(String(data.stats.campusCount || 0))
-
   return (
     <div style={styles.container} className="animate-fade-in">
       <div style={styles.header}>
-        <h2 style={styles.title}>🏆 Classement des Campus</h2>
-        <div style={styles.statsRow}>
-          <div style={styles.stat}>
-            <span style={styles.statValue}>{totalAmount.toFixed(2)} €</span>
-            <span style={styles.statLabel}>Total collecté</span>
-          </div>
-          <div style={styles.stat}>
-            <span style={styles.statValue}>{totalDonations}</span>
-            <span style={styles.statLabel}>Donations</span>
-          </div>
-          <div style={styles.stat}>
-            <span style={styles.statValue}>{campusCount}</span>
-            <span style={styles.statLabel}>Campus participants</span>
-          </div>
-        </div>
+        <h2 style={styles.title}>Classement des Campus</h2>
       </div>
 
       <div style={styles.leaderboard}>
@@ -189,37 +170,7 @@ const styles = {
     fontSize: '2rem',
     fontWeight: 'bold',
     color: 'var(--orange-primary)',
-    marginBottom: 'var(--spacing-lg)',
     textAlign: 'center',
-  } as React.CSSProperties,
-
-  statsRow: {
-    display: 'flex',
-    justifyContent: 'space-around',
-    gap: 'var(--spacing-md)',
-  } as React.CSSProperties,
-
-  stat: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: 'var(--spacing-md)',
-    backgroundColor: 'var(--grey-light)',
-    borderRadius: 'var(--radius-md)',
-    flex: 1,
-  } as React.CSSProperties,
-
-  statValue: {
-    fontSize: '1.5rem',
-    fontWeight: 'bold',
-    color: 'var(--orange-light)',
-  } as React.CSSProperties,
-
-  statLabel: {
-    fontSize: '0.875rem',
-    color: 'var(--white)',
-    opacity: 0.7,
-    marginTop: 'var(--spacing-xs)',
   } as React.CSSProperties,
 
   leaderboard: {

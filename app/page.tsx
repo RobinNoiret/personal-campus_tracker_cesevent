@@ -1,7 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import LeaderboardCard from '@/components/LeaderboardCard'
+import StatsCard from '@/components/StatsCard'
 import InfoCard from '@/components/InfoCard'
 import { Pie } from 'react-chartjs-2'
 import {
@@ -143,11 +145,19 @@ export default function HomePage() {
   return (
     <main style={styles.main}>
       <header style={styles.header}>
-        <h1 style={styles.mainTitle}>CES'Event 2025</h1>
-        <p style={styles.subtitle}>
-          Suivez en temps réel les donations par campus
-        </p>
+        <Image
+          src="/cesevent_logo.png"
+          alt="CES'Event Edition 2"
+          width={250}
+          height={125}
+          priority
+          style={styles.logo}
+        />
       </header>
+
+      <div style={styles.statsSection}>
+        <StatsCard />
+      </div>
 
       <div style={styles.bentoGrid}>
         <div style={styles.leaderboardSection} className="leaderboard-section">
@@ -169,30 +179,27 @@ export default function HomePage() {
 const styles = {
   main: {
     minHeight: '100vh',
-    padding: 'var(--spacing-xl)',
+    padding: '0 var(--spacing-xl) var(--spacing-xl)',
     backgroundColor: 'var(--black)',
   } as React.CSSProperties,
 
   header: {
     textAlign: 'center',
-    marginBottom: 'var(--spacing-xl)',
-    paddingTop: 'var(--spacing-xl)',
-  } as React.CSSProperties,
-
-  mainTitle: {
-    fontSize: '3rem',
-    fontWeight: 'bold',
-    background: 'linear-gradient(135deg, var(--orange-primary) 0%, var(--orange-light) 100%)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    backgroundClip: 'text',
+    paddingBottom: 'var(--spacing-sm)',
     marginBottom: 'var(--spacing-md)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   } as React.CSSProperties,
 
-  subtitle: {
-    fontSize: '1.25rem',
-    color: 'var(--white)',
-    opacity: 0.8,
+  logo: {
+    maxWidth: '100%',
+    height: 'auto',
+  } as React.CSSProperties,
+
+  statsSection: {
+    maxWidth: '1600px',
+    margin: '0 auto var(--spacing-xl)',
   } as React.CSSProperties,
 
   bentoGrid: {
