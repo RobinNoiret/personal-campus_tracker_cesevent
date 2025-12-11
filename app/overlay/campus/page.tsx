@@ -52,13 +52,6 @@ export default function OverlayPage() {
   }
 
   return (
-    <div style={styles.container}>
-      <div style={styles.header}>
-        <div style={styles.title}>🏆 TOP CAMPUS</div>
-        <div style={styles.totalAmount}>
-          {data.stats.totalAmount.toFixed(0)}€ collectés
-        </div>
-      </div>
 
       <div style={styles.podium}>
         {topCampus.map((campus, index) => (
@@ -80,7 +73,6 @@ export default function OverlayPage() {
           </div>
         ))}
       </div>
-    </div>
   )
 }
 

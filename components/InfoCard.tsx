@@ -20,7 +20,7 @@ export default function InfoCard() {
 
         <p style={styles.description}>
           24h de live, des jeux, des défis, des invités… mais surtout un objectif :
-          collecter un maximum de dons pour l'association <strong>Cop1</strong>, qui lutte contre la précarité étudiante 💙
+          collecter un maximum de dons pour l'association <a href="https://cop1.fr/" target="_blank" rel="noopener noreferrer" style={styles.link}>Cop1</a>, qui lutte contre la précarité étudiante 💙
         </p>
 
         <p style={styles.description}>
@@ -139,7 +139,6 @@ const styles = {
 
   link: {
     color: 'var(--orange-primary)',
-    textDecoration: 'none',
     fontWeight: '600',
   } as React.CSSProperties,
 
