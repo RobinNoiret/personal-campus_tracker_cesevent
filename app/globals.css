@@ -97,3 +97,52 @@ a {
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+
+/* Modernized styles */
+button {
+  background-color: var(--orange-primary);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--orange-light);
+  transform: scale(1.05);
+}
+
+.card {
+  background-color: var(--grey-dark);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-lg);
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.header {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.footer {
+  animation: slideInRight 0.5s ease-out;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  /* Masque toute la colonne de droite sur mobile/tablette */
+  .right-column {
+    display: none !important;
+  }
+
+  /* Le leaderboard prend toute la largeur */
+  .leaderboard-section {
+    grid-column: 1 / -1 !important;
+  }
+}

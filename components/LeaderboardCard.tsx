@@ -110,10 +110,7 @@ export default function LeaderboardCard() {
               className="animate-slide-in"
             >
               <div style={styles.rankBadge}>
-                {index === 0 && '🥇'}
-                {index === 1 && '🥈'}
-                {index === 2 && '🥉'}
-                {index > 2 && `#${index + 1}`}
+                #{index + 1}
               </div>
 
               <div style={styles.campusInfo}>
@@ -136,9 +133,6 @@ export default function LeaderboardCard() {
           <span style={styles.unidentified}>
             {data.stats.unidentified.count} donation(s) non identifiée(s) -{' '}
             {parseFloat(String(data.stats.unidentified.amount || 0)).toFixed(2)} €
-          </span>
-          <span style={styles.hint}>
-            💡 Pensez à ajouter le hashtag de votre campus !
           </span>
         </div>
       )}
