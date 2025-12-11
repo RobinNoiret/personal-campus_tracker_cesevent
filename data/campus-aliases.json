@@ -1,52 +1,127 @@
 {
-  "paris": {
-    "name": "Paris",
-    "hashtags": ["#paris", "#pariscampus"],
-    "aliases": ["paris", "capitale"]
+  "aixenprovence": {
+    "name": "Aix-en-Provence",
+    "hashtags": ["#aixenprovence", "#aix"],
+    "aliases": ["aix-en-provence", "aix en provence", "aix", "aixenprovence"]
   },
-  "lyon": {
-    "name": "Lyon",
-    "hashtags": ["#lyon", "#lyoncampus"],
-    "aliases": ["lyon"]
+  "angouleme": {
+    "name": "Angoulême",
+    "hashtags": ["#angouleme", "#angoulême"],
+    "aliases": ["angouleme", "angoulême"]
   },
-  "nanterre": {
-    "name": "Nanterre",
-    "hashtags": ["#nanterre", "#nanterrecampus"],
-    "aliases": ["nanterre"]
+  "arras": {
+    "name": "Arras",
+    "hashtags": ["#arras"],
+    "aliases": ["arras"]
   },
   "bordeaux": {
     "name": "Bordeaux",
-    "hashtags": ["#bordeaux", "#bordeauxcampus"],
+    "hashtags": ["#bordeaux"],
     "aliases": ["bordeaux"]
+  },
+  "brest": {
+    "name": "Brest",
+    "hashtags": ["#brest"],
+    "aliases": ["brest"]
+  },
+  "caen": {
+    "name": "Caen",
+    "hashtags": ["#caen"],
+    "aliases": ["caen"]
+  },
+  "chateauroux": {
+    "name": "Châteauroux",
+    "hashtags": ["#chateauroux", "#châteauroux"],
+    "aliases": ["chateauroux", "châteauroux"]
+  },
+  "dijon": {
+    "name": "Dijon",
+    "hashtags": ["#dijon"],
+    "aliases": ["dijon"]
+  },
+  "grenoble": {
+    "name": "Grenoble",
+    "hashtags": ["#grenoble"],
+    "aliases": ["grenoble"]
+  },
+  "larochelle": {
+    "name": "La Rochelle",
+    "hashtags": ["#larochelle", "#rochelle"],
+    "aliases": ["la rochelle", "larochelle", "rochelle"]
+  },
+  "lemans": {
+    "name": "Le Mans",
+    "hashtags": ["#lemans", "#mans"],
+    "aliases": ["le mans", "lemans", "mans"]
   },
   "lille": {
     "name": "Lille",
-    "hashtags": ["#lille", "#lillecampus"],
+    "hashtags": ["#lille"],
     "aliases": ["lille"]
   },
-  "toulouse": {
-    "name": "Toulouse",
-    "hashtags": ["#toulouse", "#toulousecampus"],
-    "aliases": ["toulouse"]
+  "lyon": {
+    "name": "Lyon",
+    "hashtags": ["#lyon"],
+    "aliases": ["lyon"]
   },
-  "marseille": {
-    "name": "Marseille",
-    "hashtags": ["#marseille", "#marseillecampus"],
-    "aliases": ["marseille"]
+  "montpellier": {
+    "name": "Montpellier",
+    "hashtags": ["#montpellier"],
+    "aliases": ["montpellier"]
   },
-  "strasbourg": {
-    "name": "Strasbourg",
-    "hashtags": ["#strasbourg", "#strasbourgcampus"],
-    "aliases": ["strasbourg"]
-  },
-  "rennes": {
-    "name": "Rennes",
-    "hashtags": ["#rennes", "#rennescampus"],
-    "aliases": ["rennes"]
+  "nancy": {
+    "name": "Nancy",
+    "hashtags": ["#nancy"],
+    "aliases": ["nancy"]
   },
   "nantes": {
     "name": "Nantes",
-    "hashtags": ["#nantes", "#nantescampus"],
+    "hashtags": ["#nantes"],
     "aliases": ["nantes"]
+  },
+  "nanterre": {
+    "name": "Nanterre",
+    "hashtags": ["#nanterre"],
+    "aliases": ["nanterre", "paris-nanterre", "paris nanterre"]
+  },
+  "nice": {
+    "name": "Nice",
+    "hashtags": ["#nice"],
+    "aliases": ["nice"]
+  },
+  "orleans": {
+    "name": "Orléans",
+    "hashtags": ["#orleans", "#orléans"],
+    "aliases": ["orleans", "orléans"]
+  },
+  "pau": {
+    "name": "Pau",
+    "hashtags": ["#pau"],
+    "aliases": ["pau"]
+  },
+  "reims": {
+    "name": "Reims",
+    "hashtags": ["#reims"],
+    "aliases": ["reims"]
+  },
+  "rouen": {
+    "name": "Rouen",
+    "hashtags": ["#rouen"],
+    "aliases": ["rouen"]
+  },
+  "saintnazaire": {
+    "name": "Saint-Nazaire",
+    "hashtags": ["#saintnazaire", "#stnazaire"],
+    "aliases": ["saint-nazaire", "saint nazaire", "saintnazaire", "st-nazaire", "st nazaire"]
+  },
+  "strasbourg": {
+    "name": "Strasbourg",
+    "hashtags": ["#strasbourg"],
+    "aliases": ["strasbourg"]
+  },
+  "toulouse": {
+    "name": "Toulouse",
+    "hashtags": ["#toulouse"],
+    "aliases": ["toulouse"]
   }
 }
