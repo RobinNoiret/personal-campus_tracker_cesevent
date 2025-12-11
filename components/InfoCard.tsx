@@ -1,27 +1,41 @@
 'use client'
 
-import { Info, Hash } from 'lucide-react'
-
 export default function InfoCard() {
   return (
     <div style={styles.container}>
       <div style={styles.header}>
-        <Info size={24} style={{ color: 'var(--orange-primary)' }} />
         <h2 style={styles.title}>À propos de l'événement</h2>
       </div>
 
       <div style={styles.content}>
         <p style={styles.description}>
-          Bienvenue sur le tracker officiel du <strong>CES'Event 2025</strong> !
-          Suivez en temps réel les donations de chaque campus et voyez qui mène la compétition.
+          <strong>CES'Event</strong> revient pour une <strong>2e édition solidaire</strong> ! 🤝
+        </p>
+
+        <div style={styles.eventInfo}>
+          <p style={styles.infoLine}>📅 <strong>19 & 20 décembre 2025</strong></p>
+          <p style={styles.infoLine}>📍 En direct du campus <strong>CESI Lyon</strong></p>
+          <p style={styles.infoLine}>📺 <a href="https://twitch.tv/ces_event" target="_blank" rel="noopener noreferrer" style={styles.link}>twitch.tv/ces_event</a></p>
+        </div>
+
+        <p style={styles.description}>
+          24h de live, des jeux, des défis, des invités… mais surtout un objectif :
+          collecter un maximum de dons pour l'association <strong>Cop1</strong>, qui lutte contre la précarité étudiante 💙
+        </p>
+
+        <p style={styles.description}>
+          💡 Inspiré du ZEvent, cet événement est organisé par les étudiants du CESI Lyon, avec passion et engagement.
+        </p>
+
+        <p style={styles.goal}>
+          🎯 <strong>Objectif 2025 :</strong> battre les 540 € récoltés l'an dernier et doubler la visibilité !
         </p>
 
         <div style={styles.divider} />
 
         <div style={styles.hashtagSection}>
           <div style={styles.hashtagHeader}>
-            <Hash size={20} style={{ color: 'var(--orange-light)' }} />
-            <h3 style={styles.hashtagTitle}>Comment ça marche ?</h3>
+            <h3 style={styles.hashtagTitle}>Comment participer ?</h3>
           </div>
 
           <p style={styles.hashtagText}>
@@ -30,13 +44,33 @@ export default function InfoCard() {
           </p>
 
           <div style={styles.exampleBox}>
-            <p style={styles.exampleLabel}>Exemples de hashtags :</p>
+            <p style={styles.exampleLabel}>Hashtags :</p>
             <div style={styles.hashtagList}>
-              <span style={styles.hashtag}>#Paris</span>
-              <span style={styles.hashtag}>#Lyon</span>
-              <span style={styles.hashtag}>#Nanterre</span>
+              <span style={styles.hashtag}>#AixEnProvence</span>
+              <span style={styles.hashtag}>#Angouleme</span>
+              <span style={styles.hashtag}>#Arras</span>
               <span style={styles.hashtag}>#Bordeaux</span>
-              <span style={styles.hashtag}>#Marseille</span>
+              <span style={styles.hashtag}>#Brest</span>
+              <span style={styles.hashtag}>#Caen</span>
+              <span style={styles.hashtag}>#Chateauroux</span>
+              <span style={styles.hashtag}>#Dijon</span>
+              <span style={styles.hashtag}>#Grenoble</span>
+              <span style={styles.hashtag}>#LaRochelle</span>
+              <span style={styles.hashtag}>#LeMans</span>
+              <span style={styles.hashtag}>#Lille</span>
+              <span style={styles.hashtag}>#Lyon</span>
+              <span style={styles.hashtag}>#Montpellier</span>
+              <span style={styles.hashtag}>#Nancy</span>
+              <span style={styles.hashtag}>#Nantes</span>
+              <span style={styles.hashtag}>#Nanterre</span>
+              <span style={styles.hashtag}>#Nice</span>
+              <span style={styles.hashtag}>#Orleans</span>
+              <span style={styles.hashtag}>#Pau</span>
+              <span style={styles.hashtag}>#Reims</span>
+              <span style={styles.hashtag}>#Rouen</span>
+              <span style={styles.hashtag}>#SaintNazaire</span>
+              <span style={styles.hashtag}>#Strasbourg</span>
+              <span style={styles.hashtag}>#Toulouse</span>
             </div>
           </div>
 
@@ -86,6 +120,36 @@ const styles = {
     fontSize: '1rem',
     lineHeight: '1.6',
     opacity: 0.9,
+  } as React.CSSProperties,
+
+  eventInfo: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 'var(--spacing-xs)',
+    marginBottom: 'var(--spacing-sm)',
+  } as React.CSSProperties,
+
+  infoLine: {
+    color: 'var(--white)',
+    fontSize: '1rem',
+    lineHeight: '1.6',
+    opacity: 0.9,
+    margin: 0,
+  } as React.CSSProperties,
+
+  link: {
+    color: 'var(--orange-primary)',
+    textDecoration: 'none',
+    fontWeight: '600',
+  } as React.CSSProperties,
+
+  goal: {
+    color: 'var(--white)',
+    fontSize: '1rem',
+    lineHeight: '1.6',
+    opacity: 0.95,
+    fontWeight: '600',
+    margin: 0,
   } as React.CSSProperties,
 
   divider: {
