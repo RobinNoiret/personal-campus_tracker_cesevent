@@ -100,31 +100,61 @@ export default function LeaderboardCard() {
         {activeCampus.length === 0 ? (
           <div style={styles.empty}>Aucune donation identifiée pour le moment</div>
         ) : (
-          activeCampus.map((campus, index) => (
-            <div
-              key={campus.campusId}
-              style={{
-                ...styles.campusRow,
-                animationDelay: `${index * 0.1}s`
-              }}
-              className="animate-slide-in"
-            >
-              <div style={styles.rankBadge}>
-                #{index + 1}
-              </div>
+          activeCampus.map((campus, index) => {
+            const isTopThree = index < 3
+            let borderColor = 'transparent'
+            let rankColor = 'var(--white)'
 
-              <div style={styles.campusInfo}>
-                <div style={styles.campusName}>{campus.campusName}</div>
-                <div style={styles.campusStats}>
-                  {campus.donationCount} donation{campus.donationCount > 1 ? 's' : ''}
+            if (index === 0) {
+              borderColor = 'var(--orange-primary)'
+              rankColor = 'var(--orange-primary)'
+            } else if (index === 1) {
+              borderColor = 'var(--orange-light)'
+              rankColor = 'var(--orange-light)'
+            } else if (index === 2) {
+              borderColor = 'var(--orange-pale)'
+              rankColor = 'var(--orange-pale)'
+            }
+
+            return (
+              <div
+                key={campus.campusId}
+                style={{
+                  ...styles.campusRow,
+                  ...(isTopThree ? {
+                    ...styles.topThreeRow,
+                    border: `3px solid ${borderColor}`
+                  } : {}),
+                  animationDelay: `${index * 0.1}s`
+                }}
+                className="animate-slide-in"
+              >
+                <div style={{
+                  ...styles.rankBadge,
+                  ...(isTopThree ? {
+                    ...styles.topThreeRank,
+                    color: rankColor
+                  } : {})
+                }}>
+                  #{index + 1}
+                </div>
+
+                <div style={styles.campusInfo}>
+                  <div style={styles.campusName}>{campus.campusName}</div>
+                  <div style={styles.campusStats}>
+                    {campus.donationCount} donation{campus.donationCount > 1 ? 's' : ''}
+                  </div>
+                </div>
+
+                <div style={{
+                  ...styles.campusAmount,
+                  ...(isTopThree ? styles.topThreeAmount : {})
+                }}>
+                  {parseFloat(String(campus.totalAmount || 0)).toFixed(2)} €
                 </div>
               </div>
-
-              <div style={styles.campusAmount}>
-                {parseFloat(String(campus.totalAmount || 0)).toFixed(2)} €
-              </div>
-            </div>
-          ))
+            )
+          })
         )}
       </div>
 
@@ -209,11 +239,20 @@ const styles = {
     cursor: 'default',
   } as React.CSSProperties,
 
+  topThreeRow: {
+    boxShadow: '0 4px 12px rgba(211, 97, 78, 0.2)',
+  } as React.CSSProperties,
+
   rankBadge: {
     fontSize: '1.5rem',
     width: '50px',
     textAlign: 'center',
     fontWeight: 'bold',
+  } as React.CSSProperties,
+
+  topThreeRank: {
+    color: 'var(--orange-primary)',
+    fontSize: '1.75rem',
   } as React.CSSProperties,
 
   campusInfo: {
@@ -237,6 +276,11 @@ const styles = {
     fontSize: '1.5rem',
     fontWeight: 'bold',
     color: 'var(--orange-primary)',
+  } as React.CSSProperties,
+
+  topThreeAmount: {
+    fontSize: '1.75rem',
+    color: 'var(--orange-light)',
   } as React.CSSProperties,
 
   footer: {
