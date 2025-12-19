@@ -39,13 +39,6 @@ export default function InfoCard() {
           </div>
 
           <p style={styles.hashtagText}>
-            Ce classement concerne uniquement la cagnotte du <strong>challenge inter-campus</strong> :{' '}
-            <a href="https://streamlabscharity.com/teams/@cesevent/cesevent-edition-2?member=878942034315055388&l=fr-FR" target="_blank" rel="noopener noreferrer" style={styles.link}>
-              CES'Event - Challenge Inter-Campus
-            </a>
-          </p>
-
-          <p style={styles.hashtagText}>
             Pour que votre donation soit comptabilisée pour votre campus,
             ajoutez simplement le hashtag de votre campus dans le message de votre donation.
           </p>
