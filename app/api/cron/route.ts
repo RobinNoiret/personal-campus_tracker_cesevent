@@ -27,12 +27,34 @@ async function getLastDonationTimestamp(): Promise<number | null> {
 }
 
 /**
+ * Déduplique les donations par ID
+ */
+function deduplicateDonations(donations: any[]): any[] {
+  const seen = new Set<string>()
+  const deduplicated: any[] = []
+
+  for (const donation of donations) {
+    if (!seen.has(donation.id)) {
+      seen.add(donation.id)
+      deduplicated.push(donation)
+    }
+  }
+
+  return deduplicated
+}
+
+/**
  * Sauvegarde les donations en base de données
  */
 async function saveDonations(donations: any[]): Promise<number> {
+  // Dédupliquer les donations avant insertion
+  const uniqueDonations = deduplicateDonations(donations)
+
+  console.log(`[CRON] ${donations.length} donations récupérées, ${uniqueDonations.length} uniques après déduplication`)
+
   let savedCount = 0
 
-  for (const donation of donations) {
+  for (const donation of uniqueDonations) {
     try {
       // Parser le campus
       const campusInfo = parseCampusFromMessage(donation.message || '')
@@ -57,14 +79,14 @@ async function saveDonations(donations: any[]): Promise<number> {
           campus_confidence
         )
         VALUES (
-          ${donation.donation_id},
+          ${donation.id},
           ${donation.name},
-          ${donation.email || null},
+          ${null},
           ${donation.message || ''},
-          ${parseFloat(donation.amount)},
+          ${donation.amount},
           ${donation.currency},
-          ${parseInt(donation.created_at) * 1000},
-          ${donation.verified !== false},
+          ${donation.timestamp},
+          ${donation.verified},
           ${campusInfo.campusId},
           ${campusInfo.campusName},
           ${confidenceValue}
@@ -107,13 +129,12 @@ export async function GET(request: NextRequest) {
 
     if (lastTimestamp) {
       // Récupérer uniquement les nouvelles donations depuis le dernier timestamp
-      const sinceSeconds = Math.floor(lastTimestamp / 1000)
       console.log(`[CRON] Récupération des donations depuis ${new Date(lastTimestamp).toLocaleString()}`)
-      donations = await client.getAllDonationsSince(sinceSeconds)
+      donations = await client.getAllDonationsSince(lastTimestamp)
     } else {
       // Base vide : récupérer les 100 dernières donations
       console.log('[CRON] Première synchronisation - récupération des 100 dernières donations')
-      donations = await client.getDonations(100)
+      donations = await client.getAllDonations(100)
     }
 
     if (donations.length === 0) {

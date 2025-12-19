@@ -1,4 +1,4 @@
-import type { StreamlabsApiResponse, NormalizedDonation } from './types'
+import type { StreamlabsCharityApiResponse, StreamlabsCharityDonationItem, NormalizedDonation } from './types'
 import { normalizeDonation } from './types'
 
 /**
@@ -11,53 +11,36 @@ import { normalizeDonation } from './types'
  */
 
 export class StreamlabsClient {
-  private readonly accessToken: string
-  private readonly baseUrl = 'https://streamlabs.com/api/v2.0'
+  private readonly teamId = '878941731532444408'
+  private readonly baseUrl = `https://streamlabscharity.com/api/v1/teams/${this.teamId}`
 
-  constructor(accessToken?: string) {
-    this.accessToken = accessToken || process.env.STREAMLABS_ACCESS_TOKEN || ''
-
-    if (!this.accessToken) {
-      throw new Error(
-        'STREAMLABS_ACCESS_TOKEN is required. Please set it in your .env.local file.'
-      )
-    }
+  constructor() {
+    // L'API Streamlabs Charity est publique, pas besoin d'authentification
   }
 
   /**
-   * Récupère les donations depuis Streamlabs
-   * @param limit Nombre de donations à récupérer (max 100)
-   * @param after Timestamp pour pagination
+   * Récupère toutes les donations depuis Streamlabs Charity
+   * L'API retourne toutes les donations d'un coup (pas de pagination)
    */
-  async getDonations(limit: number = 100, after?: number): Promise<NormalizedDonation[]> {
+  async getDonations(): Promise<StreamlabsCharityDonationItem[]> {
     try {
-      const params = new URLSearchParams({
-        limit: Math.min(limit, 100).toString(),
-        currency: 'EUR', // Adapter si nécessaire
-      })
-
-      if (after) {
-        params.append('after', after.toString())
-      }
-
-      const response = await fetch(`${this.baseUrl}/donations?${params.toString()}`, {
+      const response = await fetch(`${this.baseUrl}/donations`, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
-          'Authorization': `Bearer ${this.accessToken}`,
         },
       })
 
       if (!response.ok) {
-        throw new Error(`Streamlabs API error: ${response.status} ${response.statusText}`)
+        const errorText = await response.text()
+        throw new Error(`Streamlabs Charity API error: ${response.status} ${response.statusText} - ${errorText}`)
       }
 
-      const data: StreamlabsApiResponse = await response.json()
+      const data: StreamlabsCharityDonationItem[] = await response.json()
 
-      // Normalise et retourne les donations
-      return data.data.map(normalizeDonation)
+      return data
     } catch (error) {
-      console.error('Error fetching donations from Streamlabs:', error)
+      console.error('Error fetching donations from Streamlabs Charity:', error)
       throw error
     }
   }
@@ -65,29 +48,32 @@ export class StreamlabsClient {
   /**
    * Récupère toutes les donations depuis un timestamp donné
    */
-  async getAllDonationsSince(since: number): Promise<NormalizedDonation[]> {
-    const allDonations: NormalizedDonation[] = []
-    let after: number | undefined = since
+  async getAllDonationsSince(sinceTimestamp: number): Promise<NormalizedDonation[]> {
+    const items = await this.getDonations()
 
-    while (true) {
-      const donations = await this.getDonations(100, after)
+    // Normaliser les donations
+    const normalized = items.map(normalizeDonation)
 
-      if (donations.length === 0) {
-        break
-      }
+    // Filtrer uniquement les donations plus récentes que le timestamp
+    const newDonations = normalized.filter(d => d.timestamp > sinceTimestamp)
 
-      allDonations.push(...donations)
+    return newDonations
+  }
 
-      // Si on a moins de 100 donations, c'est la dernière page
-      if (donations.length < 100) {
-        break
-      }
+  /**
+   * Récupère toutes les donations
+   * @param limit Nombre maximum de donations à récupérer (optionnel)
+   */
+  async getAllDonations(limit?: number): Promise<NormalizedDonation[]> {
+    const items = await this.getDonations()
+    const normalized = items.map(normalizeDonation)
 
-      // Continue avec le timestamp de la dernière donation
-      after = donations[donations.length - 1].timestamp
+    // Si on a une limite, on retourne seulement les X dernières
+    if (limit && normalized.length > limit) {
+      return normalized.slice(0, limit)
     }
 
-    return allDonations
+    return normalized
   }
 }
 
