@@ -73,8 +73,8 @@ export default function HomePage() {
 
     // Rafraîchit toutes les 60 secondes
     // DÉSACTIVÉ EN ATTENTE DE L'ÉVÉNEMENT - À réactiver le jour J
-    // const interval = setInterval(fetchLeaderboard, 60000)
-    // return () => clearInterval(interval)
+    const interval = setInterval(fetchLeaderboard, 60000)
+    return () => clearInterval(interval)
   }, [])
 
   // Prépare les données du graphique : Top 5 + Autres
