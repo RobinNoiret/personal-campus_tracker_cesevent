@@ -1,4 +1,4 @@
-import type { StreamlabsCharityApiResponse, StreamlabsCharityDonationItem, NormalizedDonation } from './types'
+import type { StreamlabsCharityDonationItem, NormalizedDonation } from './types'
 import { normalizeDonation } from './types'
 
 /**
@@ -19,12 +19,16 @@ export class StreamlabsClient {
   }
 
   /**
-   * Récupère toutes les donations depuis Streamlabs Charity
-   * L'API retourne toutes les donations d'un coup (pas de pagination)
+   * Récupère les donations d'une page depuis Streamlabs Charity
+   * @param page Numéro de page (commence à 0, max 500 donations par page)
    */
-  async getDonations(): Promise<StreamlabsCharityDonationItem[]> {
+  async getDonationsPage(page: number = 0): Promise<StreamlabsCharityDonationItem[]> {
     try {
-      const response = await fetch(`${this.baseUrl}/donations`, {
+      const params = new URLSearchParams({
+        page: page.toString(),
+      })
+
+      const response = await fetch(`${this.baseUrl}/donations?${params.toString()}`, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -46,10 +50,38 @@ export class StreamlabsClient {
   }
 
   /**
+   * Récupère toutes les donations avec pagination automatique
+   */
+  async getAllDonationsWithPagination(): Promise<StreamlabsCharityDonationItem[]> {
+    const allItems: StreamlabsCharityDonationItem[] = []
+    let page = 0
+    const maxPages = 100 // Limite de sécurité pour éviter les boucles infinies
+
+    while (page < maxPages) {
+      const items = await this.getDonationsPage(page)
+
+      if (items.length === 0) {
+        break
+      }
+
+      allItems.push(...items)
+
+      // Si on a moins de 500 items, c'est la dernière page
+      if (items.length < 500) {
+        break
+      }
+
+      page++
+    }
+
+    return allItems
+  }
+
+  /**
    * Récupère toutes les donations depuis un timestamp donné
    */
   async getAllDonationsSince(sinceTimestamp: number): Promise<NormalizedDonation[]> {
-    const items = await this.getDonations()
+    const items = await this.getAllDonationsWithPagination()
 
     // Normaliser les donations
     const normalized = items.map(normalizeDonation)
@@ -65,10 +97,10 @@ export class StreamlabsClient {
    * @param limit Nombre maximum de donations à récupérer (optionnel)
    */
   async getAllDonations(limit?: number): Promise<NormalizedDonation[]> {
-    const items = await this.getDonations()
+    const items = await this.getAllDonationsWithPagination()
     const normalized = items.map(normalizeDonation)
 
-    // Si on a une limite, on retourne seulement les X dernières
+    // Si on a une limite, on retourne seulement les X premières
     if (limit && normalized.length > limit) {
       return normalized.slice(0, limit)
     }
