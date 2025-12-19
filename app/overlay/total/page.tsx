@@ -28,8 +28,8 @@ export default function TotalOverlay() {
 
     fetchStats()
 
-    // Rafraîchit toutes les 10 secondes
-    const interval = setInterval(fetchStats, 10000)
+    // Rafraîchit toutes les 60 secondes
+    const interval = setInterval(fetchStats, 60000)
     return () => clearInterval(interval)
   }, [])
 

@@ -36,8 +36,8 @@ export default function StatsCard() {
 
     fetchStats()
 
-    // Rafraîchit toutes les 30 secondes
-    const interval = setInterval(fetchStats, 30000)
+    // Rafraîchit toutes les 60 secondes
+    const interval = setInterval(fetchStats, 60000)
     return () => clearInterval(interval)
   }, [])
 
