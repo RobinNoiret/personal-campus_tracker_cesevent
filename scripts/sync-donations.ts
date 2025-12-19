@@ -129,9 +129,8 @@ async function syncDonations(): Promise<void> {
 
     if (stats.lastDonationTimestamp) {
       // Récupérer uniquement les nouvelles donations depuis le dernier timestamp
-      const sinceSeconds = Math.floor(stats.lastDonationTimestamp / 1000)
       console.log(`🔄 Récupération des donations depuis ${new Date(stats.lastDonationTimestamp).toLocaleString()}...`)
-      donations = await client.getAllDonationsSince(sinceSeconds)
+      donations = await client.getAllDonationsSince(stats.lastDonationTimestamp)
     } else {
       // Premier lancement : vérifier si la base contient déjà des données
       const lastTimestamp = await getLastDonationTimestamp()
@@ -139,12 +138,11 @@ async function syncDonations(): Promise<void> {
       if (lastTimestamp) {
         console.log(`📚 Base de données existante détectée (dernière donation: ${new Date(lastTimestamp).toLocaleString()})`)
         stats.lastDonationTimestamp = lastTimestamp
-        const sinceSeconds = Math.floor(lastTimestamp / 1000)
-        donations = await client.getAllDonationsSince(sinceSeconds)
+        donations = await client.getAllDonationsSince(lastTimestamp)
       } else {
         // Base vide : récupérer les N dernières donations
         console.log(`🆕 Première synchronisation - récupération des ${INITIAL_FETCH_LIMIT} dernières donations...`)
-        donations = await client.getDonations(INITIAL_FETCH_LIMIT)
+        donations = await client.getAllDonations(INITIAL_FETCH_LIMIT)
       }
     }
 

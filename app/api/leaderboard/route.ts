@@ -66,7 +66,7 @@ export async function GET(request: Request) {
       30 * 1000, // Cache de 30 secondes
       async () => {
         const client = getStreamlabsClient()
-        const rawDonations = await client.getDonations(1000) // Récupère les 1000 dernières donations
+        const rawDonations = await client.getAllDonations(1000) // Récupère les 1000 dernières donations
 
         // Parse les donations
         const donationsWithCampus: DonationWithCampus[] = rawDonations.map(donation => ({

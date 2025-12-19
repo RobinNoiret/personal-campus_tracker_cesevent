@@ -67,7 +67,7 @@ export async function GET(request: Request) {
         if (since) {
           rawDonations = await client.getAllDonationsSince(since)
         } else {
-          rawDonations = await client.getDonations(limit)
+          rawDonations = await client.getAllDonations(limit)
         }
 
         // Parse chaque donation pour identifier le campus
