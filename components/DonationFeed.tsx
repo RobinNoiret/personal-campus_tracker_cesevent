@@ -37,8 +37,8 @@ export default function DonationFeed() {
 
     fetchDonations()
 
-    // Rafraîchit toutes les 10 secondes
-    const interval = setInterval(fetchDonations, 10000)
+    // Rafraîchit toutes les 60 secondes
+    const interval = setInterval(fetchDonations, 60000)
     return () => clearInterval(interval)
   }, [])
 

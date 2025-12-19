@@ -47,8 +47,8 @@ export default function LeaderboardCard() {
 
     fetchLeaderboard()
 
-    // Rafraîchit toutes les 30 secondes
-    const interval = setInterval(fetchLeaderboard, 30000)
+    // Rafraîchit toutes les 60 secondes
+    const interval = setInterval(fetchLeaderboard, 60000)
     return () => clearInterval(interval)
   }, [])
 
