@@ -175,6 +175,23 @@ export default function HomePage() {
         </div>
       </div>
 
+      <div style={styles.notification}>
+        <div style={styles.notificationContent}>
+          <span style={styles.notificationIcon}></span>
+          <span style={styles.notificationText}>
+            Le classement des campus concerne uniquement la cagnotte du{' '}
+            <a
+              href="https://streamlabscharity.com/teams/@cesevent/cesevent-edition-2?member=878942034315055388&l=fr-FR"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={styles.notificationLink}
+            >
+              Challenge Inter-Campus
+            </a>
+          </span>
+        </div>
+      </div>
+
       <footer style={styles.footer}>
         <Link href="/mentions-legales" style={styles.footerLink}>
           Mentions légales
@@ -189,6 +206,7 @@ const styles = {
     minHeight: '100vh',
     padding: 'clamp(0.5rem, 3vw, 2rem)',
     paddingTop: 0,
+    paddingBottom: 'clamp(4rem, 8vw, 6rem)',
     backgroundColor: 'var(--black)',
   } as React.CSSProperties,
 
@@ -247,6 +265,50 @@ const styles = {
     borderRadius: 'var(--radius-lg)',
     padding: 'clamp(1rem, 3vw, 2rem)',
     boxShadow: 'var(--shadow-lg)',
+  } as React.CSSProperties,
+
+  notification: {
+    position: 'fixed',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'var(--orange-primary)',
+    padding: 'clamp(1rem, 3vw, 1.5rem)',
+    boxShadow: '0 -8px 24px rgba(211, 97, 78, 0.6), 0 -4px 12px rgba(0, 0, 0, 0.5)',
+    zIndex: 1000,
+    borderTop: '4px solid var(--orange-light)',
+  } as React.CSSProperties,
+
+  notificationContent: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 'clamp(0.5rem, 2vw, 1rem)',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    textAlign: 'center',
+  } as React.CSSProperties,
+
+  notificationIcon: {
+    fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
+    filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))',
+    flexShrink: 0,
+  } as React.CSSProperties,
+
+  notificationText: {
+    color: 'var(--white)',
+    fontSize: 'clamp(0.875rem, 2.5vw, 1.25rem)',
+    fontWeight: '600',
+    lineHeight: '1.5',
+    textShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+    flex: '1 1 auto',
+  } as React.CSSProperties,
+
+  notificationLink: {
+    color: 'var(--white)',
+    textDecoration: 'underline',
+    fontWeight: 'bold',
+    textShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+    transition: 'opacity 0.2s',
   } as React.CSSProperties,
 
   footer: {
